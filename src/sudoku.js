@@ -5,12 +5,11 @@ export function SudokuBox(cellArray){
 SudokuBox.prototype.isNumber = function(){
   var rows = this.row;
   for (var i = 0; i<rows.length; i++){
-    if (typeof rows[i] === "string"){
-      // return "not a number";
+    if (isNaN(rows[i])){
+      console.log("isNumber response: false");
       return false;
     }
   }
-  return true;
 };
 
 SudokuBox.prototype.validNumber = function(){

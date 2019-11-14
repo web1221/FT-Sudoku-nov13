@@ -8,13 +8,22 @@ function validate (array) {
   var newBox = new SudokuBox(array);
   var isValid = true;
 
-  isValid = newBox.isNumber();
+  isValid === newBox.isNumber();
+  console.log(isValid);
   if (isValid === true) {
     isValid = newBox.validNumber();
   }
+  else {
+    return isValid;
+  }
+
   if (isValid === true){
     isValid = newBox.noRepeats();
   }
+  else {
+    return isValid;
+  }
+
   return isValid;
 }
 
@@ -64,7 +73,8 @@ $(document).ready(function(){
     }
 
     let rowArray = [row1Array, row2Array, row3Array, row4Array, row5Array, row6Array, row7Array, row8Array, row9Array];
-    console.log(validate(row1Array));
+    console.log(row3Array);
+    console.log(validate(row3Array));
   });
 
 
