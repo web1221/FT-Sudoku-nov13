@@ -4,6 +4,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import { SudokuBox } from './sudoku.js';
 
+function validate (array) {
+  var newBox = new SudokuBox(array);
+  var isValid = true;
+
+  isValid = newBox.isNumber();
+  if (isValid === true) {
+    isValid = newBox.validNumber();
+  }
+  if (isValid === true){
+    isValid = newBox.noRepeats();
+  }
+  return isValid;
+}
+
 $(document).ready(function(){
   $('form#sudoku').submit(function(event){
     event.preventDefault();
@@ -16,16 +30,6 @@ $(document).ready(function(){
     let row7Array = [];
     let row8Array = [];
     let row9Array = [];
-
-    let col1Array = [];
-    let col2Array = [];
-    let col3Array = [];
-    let col4Array = [];
-    let col5Array = [];
-    let col6Array = [];
-    let col7Array = [];
-    let col8Array = [];
-    let col9Array = [];
 
     var cellValue;
     for(var i = 0; i <= 80; i++){
@@ -60,8 +64,8 @@ $(document).ready(function(){
     }
 
     let rowArray = [row1Array, row2Array, row3Array, row4Array, row5Array, row6Array, row7Array, row8Array, row9Array];
-    // var newSudoku = new SudokuBox(rowArray)
-
-
+    console.log(validate(row1Array));
   });
+
+
 });
